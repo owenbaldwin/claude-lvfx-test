@@ -1,33 +1,76 @@
-# LVFX - VFX Production Management App
+# LIAISUN VFX - Film Production VFX Management
 
-An Angular application for managing visual effects in film productions.
+An Angular application for managing visual effects in film productions. This app helps VFX supervisors and producers to break down movie scripts, track visual effects elements, and manage production resources.
+
+![LVFX App Screenshot](screenshot.png)
 
 ## Features
 
-- Production breakdown with hierarchical structure
-- Collapsible rows for sequences, scenes, action beats, and shots
-- Visual effects tracking and management
-- Budget and resource allocation
-
-## Structure
-
-The application follows a hierarchical structure for film production:
-- Sequences
+- Hierarchical breakdown of film production structure
+  - Sequences
   - Scenes
-    - Action Beats
-      - Shots
+  - Action Beats
+  - Shots
+- Collapsible rows for easy navigation
+- Visual effects tracking and asset management
+- Script-to-VFX breakdown capabilities
+- Budget tracking and estimation
 
-## Development
+## Technical Stack
 
-This project was generated with Angular CLI.
+- Angular 17
+- SCSS for styling
+- TypeScript
+- Responsive design
 
-### Installation
+## Project Structure
 
-1. Clone the repository
-2. Run `npm install` to install dependencies
-3. Run `ng serve` for a dev server
-4. Navigate to `http://localhost:4200/`
+```
+src/
+├── app/
+│   ├── components/
+│   │   ├── header/
+│   │   ├── production-breakdown/
+│   │   └── breakdown-row/
+│   ├── models/
+│   │   ├── production.model.ts
+│   │   └── mock-data.ts
+│   ├── services/
+│   │   └── production.service.ts
+│   └── app.module.ts
+├── assets/
+│   └── styles/
+└── environments/
+```
 
-## Screenshot
+## Installation and Running
 
-![LVFX Screenshot](screenshot.png)
+1. Clone the repository:
+```bash
+git clone https://github.com/owenbaldwin/claude-lvfx-test.git
+cd claude-lvfx-test
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Start the development server:
+```bash
+ng serve
+```
+
+4. Open your browser and navigate to `http://localhost:4200`
+
+## Future Enhancements
+
+- Automated script parsing for VFX breakdown
+- Cost estimation based on VFX complexity
+- Integration with scheduling tools
+- Collaboration features for team management
+- Asset management system
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
