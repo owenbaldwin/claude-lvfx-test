@@ -1,0 +1,67 @@
+<div class="production-breakdown">
+  <div class="production-header">
+    <h1 class="production-title">{{ production.title }}</h1>
+    <p class="production-subtitle">Producer</p>
+  </div>
+
+  <!-- Tabs -->
+  <div class="tabs-container">
+    <div class="tabs">
+      <button 
+        *ngFor="let tab of tabs" 
+        [class.active]="selectedTab === tab"
+        (click)="selectTab(tab)">
+        {{ tab }}
+      </button>
+    </div>
+  </div>
+
+  <!-- Action Buttons -->
+  <div class="action-buttons">
+    <button 
+      *ngFor="let action of actions"
+      class="action-btn"
+      (click)="performAction(action.action)">
+      {{ action.label }}
+    </button>
+  </div>
+
+  <!-- Search Bar -->
+  <div class="search-container">
+    <input type="text" class="search-input" placeholder="Search...">
+    <button class="search-btn">
+      <i class="fas fa-search"></i>
+    </button>
+  </div>
+
+  <!-- Breakdown Content -->
+  <div class="breakdown-content" *ngIf="selectedTab === 'Breakdown'">
+    <!-- Header Row -->
+    <div class="breakdown-header">
+      <div class="column checkbox-col"></div>
+      <div class="column id-col">Seq</div>
+      <div class="column scene-col">Scene</div>
+      <div class="column action-col">Action</div>
+      <div class="column shot-col">Shot</div>
+      <div class="column title-col">Title</div>
+      <div class="column producer-col">
+        <i class="fas fa-file-alt"></i>
+      </div>
+      <div class="column character-col">
+        <i class="fas fa-user"></i>
+      </div>
+      <div class="column assets-col">Assets <span>(shots)</span></div>
+      <div class="column assumptions-col">Assumptions <span>(shots)</span></div>
+      <div class="column fx-col">FX <span>(shots)</span></div>
+      <div class="column options-col">Options</div>
+    </div>
+
+    <!-- Sequences -->
+    <app-breakdown-row 
+      *ngFor="let sequence of production.sequences"
+      [item]="sequence"
+      [type]="'sequence'"
+      [level]="0">
+    </app-breakdown-row>
+  </div>
+</div>
