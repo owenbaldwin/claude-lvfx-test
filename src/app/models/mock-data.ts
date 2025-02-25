@@ -1,4 +1,40 @@
-import { Production } from './production.model';
+interface BaseItem {
+  id: string;
+  title: string;
+  isCollapsed?: boolean;
+}
+
+interface Shot extends BaseItem {
+  description: string;
+  thumbnail?: string;
+  has?: {
+    character?: boolean;
+    asset?: boolean;
+    fx?: boolean;
+  };
+}
+
+interface ActionBeat extends BaseItem {
+  description: string;
+  shots: Shot[];
+}
+
+interface Scene extends BaseItem {
+  description: string;
+  actionBeats: ActionBeat[];
+  characters?: number;
+}
+
+interface Sequence extends BaseItem {
+  description?: string;
+  scenes: Scene[];
+}
+
+interface Production {
+  id: string;
+  title: string;
+  sequences: Sequence[];
+}
 
 export const MOCK_PRODUCTION: Production = {
   id: 'test88',
@@ -14,6 +50,7 @@ export const MOCK_PRODUCTION: Production = {
           title: 'DEEP SPACE - THE SINGULARITY',
           characters: 2,
           isCollapsed: false,
+          description: '',
           actionBeats: [
             {
               id: 'SEQ:1:1',
@@ -51,3 +88,5 @@ export const MOCK_PRODUCTION: Production = {
     }
   ]
 };
+
+export { Production, Sequence, Scene, ActionBeat, Shot };
