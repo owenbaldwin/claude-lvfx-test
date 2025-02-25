@@ -1,6 +1,43 @@
 import { Component, OnInit } from '@angular/core';
-import { Production, Sequence, Scene, ActionBeat } from '../../models/production.model';
 import { ProductionService } from '../../services/production.service';
+
+interface BaseItem {
+  id: string;
+  title: string;
+  isCollapsed?: boolean;
+}
+
+interface Shot extends BaseItem {
+  description: string;
+  thumbnail?: string;
+  has?: {
+    character?: boolean;
+    asset?: boolean;
+    fx?: boolean;
+  };
+}
+
+interface ActionBeat extends BaseItem {
+  description: string;
+  shots: Shot[];
+}
+
+interface Scene extends BaseItem {
+  description: string;
+  actionBeats: ActionBeat[];
+  characters?: number;
+}
+
+interface Sequence extends BaseItem {
+  description?: string;
+  scenes: Scene[];
+}
+
+interface Production {
+  id: string;
+  title: string;
+  sequences: Sequence[];
+}
 
 @Component({
   selector: 'app-production-breakdown',
