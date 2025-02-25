@@ -7,8 +7,8 @@ import { Sequence, Scene, ActionBeat, Shot } from '../../models/production.model
   styleUrls: ['./breakdown-row.component.scss']
 })
 export class BreakdownRowComponent implements OnInit {
-  @Input() item: Sequence | Scene | ActionBeat | Shot;
-  @Input() type: 'sequence' | 'scene' | 'action' | 'shot';
+  @Input() item!: Sequence | Scene | ActionBeat | Shot;
+  @Input() type!: 'sequence' | 'scene' | 'action' | 'shot';
   @Input() level: number = 0;
 
   constructor() { }
