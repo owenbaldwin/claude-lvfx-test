@@ -41,17 +41,17 @@ export class ProductionService {
   }
 
   private findSequence(sequenceId: string): Sequence | undefined {
-    return this.production.sequences.find(seq => seq.id === sequenceId);
+    return this.production.sequences.find((seq: Sequence) => seq.id === sequenceId);
   }
 
   private findScene(sequenceId: string, sceneId: string): Scene | undefined {
     const sequence = this.findSequence(sequenceId);
-    return sequence?.scenes.find(scene => scene.id === sceneId);
+    return sequence?.scenes.find((scene: Scene) => scene.id === sceneId);
   }
 
   private findActionBeat(sequenceId: string, sceneId: string, actionBeatId: string): ActionBeat | undefined {
     const scene = this.findScene(sequenceId, sceneId);
-    return scene?.actionBeats.find(beat => beat.id === actionBeatId);
+    return scene?.actionBeats.find((beat: ActionBeat) => beat.id === actionBeatId);
   }
 
   /* Methods for future implementation */
