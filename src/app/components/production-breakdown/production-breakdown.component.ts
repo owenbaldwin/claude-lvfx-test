@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Production } from '../../models/production.model';
+import { Production, Sequence, Scene, ActionBeat } from '../../models/production.model';
 import { ProductionService } from '../../services/production.service';
 
 @Component({
@@ -64,11 +64,11 @@ export class ProductionBreakdownComponent implements OnInit {
   }
 
   closeAllItems(): void {
-    this.production.sequences.forEach(seq => {
+    this.production.sequences.forEach((seq: Sequence) => {
       seq.isCollapsed = true;
-      seq.scenes.forEach(scene => {
+      seq.scenes.forEach((scene: Scene) => {
         scene.isCollapsed = true;
-        scene.actionBeats.forEach(beat => {
+        scene.actionBeats.forEach((beat: ActionBeat) => {
           beat.isCollapsed = true;
         });
       });
