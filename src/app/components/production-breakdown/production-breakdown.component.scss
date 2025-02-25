@@ -76,6 +76,42 @@
   color: #000;
 }
 
+/* Search Container */
+.search-container {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.search-input {
+  flex: 1;
+  background-color: var(--light-bg);
+  border: none;
+  color: #fff;
+  padding: 10px 15px;
+  font-size: 14px;
+  border-radius: 4px 0 0 4px;
+  outline: none;
+}
+
+.search-input::placeholder {
+  color: var(--secondary-color);
+}
+
+.search-btn {
+  background-color: var(--medium-bg);
+  color: #fff;
+  border: none;
+  padding: 0 15px;
+  cursor: pointer;
+  border-radius: 0 4px 4px 0;
+  transition: background-color 0.3s;
+}
+
+.search-btn:hover {
+  background-color: var(--primary-color);
+  color: #000;
+}
+
 /* Breakdown Header */
 .breakdown-header {
   display: flex;
