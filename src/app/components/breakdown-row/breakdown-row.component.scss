@@ -1,0 +1,150 @@
+.breakdown-row {
+  border-bottom: 1px solid var(--medium-bg);
+}
+
+.row-content {
+  display: flex;
+  padding: 8px 0;
+  transition: background-color 0.2s ease;
+}
+
+.row-content:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.column {
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-col {
+  width: 30px;
+  flex-shrink: 0;
+}
+
+.id-col {
+  width: 80px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.toggle-btn {
+  background: none;
+  border: none;
+  color: var(--secondary-color);
+  cursor: pointer;
+  padding: 0;
+  margin-right: 5px;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+}
+
+.scene-col, .action-col, .shot-col {
+  width: 100px;
+  flex-shrink: 0;
+}
+
+.scene-icon, .action-icon, .shot-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.scene-icon {
+  background-color: rgba(63, 81, 181, 0.2);
+  color: #7986cb;
+}
+
+.action-icon {
+  background-color: rgba(255, 193, 7, 0.2);
+  color: #ffd54f;
+}
+
+.shot-icon {
+  background-color: rgba(76, 175, 80, 0.2);
+  color: #81c784;
+}
+
+.title-col {
+  flex-grow: 1;
+  min-width: 300px;
+}
+
+.title-text {
+  white-space: normal;
+  word-break: break-word;
+  line-height: 1.4;
+  font-size: 14px;
+}
+
+.sequence-title {
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+.producer-col, .character-col {
+  width: 40px;
+  flex-shrink: 0;
+  justify-content: center;
+  font-size: 13px;
+}
+
+.assets-col, .assumptions-col, .fx-col {
+  width: 120px;
+  flex-shrink: 0;
+  justify-content: center;
+}
+
+.asset-icon, .assumption-icon, .fx-icon {
+  color: var(--primary-color);
+  font-size: 14px;
+}
+
+.options-col {
+  width: 60px;
+  flex-shrink: 0;
+  justify-content: center;
+}
+
+.options-btn {
+  background: none;
+  border: none;
+  color: var(--secondary-color);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.options-btn:hover {
+  color: #fff;
+}
+
+/* Row type specific styles */
+.sequence-row > .row-content {
+  background-color: var(--darker-bg);
+}
+
+.scene-row > .row-content {
+  background-color: #232426;
+}
+
+.action-row > .row-content {
+  background-color: #2a2b2e;
+}
+
+.shot-row > .row-content {
+  background-color: #33353a;
+}

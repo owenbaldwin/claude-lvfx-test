@@ -1,0 +1,103 @@
+<div [ngClass]="getRowClass()">
+  <!-- Main Row -->
+  <div class="row-content">
+    <div class="column checkbox-col">
+      <input type="checkbox">
+    </div>
+
+    <div class="column id-col" [style.paddingLeft.px]="level * 20">
+      <button *ngIf="!isShot(item)" class="toggle-btn" (click)="toggleCollapse()">
+        <i class="fas" [ngClass]="getToggleIcon()"></i>
+      </button>
+      <span class="id-text">{{ item.id }}</span>
+    </div>
+
+    <!-- Type-specific columns -->
+    <div class="column scene-col" *ngIf="isSequence(item) || isScene(item)">
+      <div *ngIf="isScene(item)" class="scene-icon">
+        <i class="fas fa-film"></i>
+      </div>
+    </div>
+
+    <div class="column action-col" *ngIf="isActionBeat(item) || isShot(item)">
+      <div *ngIf="isActionBeat(item)" class="action-icon">
+        <i class="fas fa-bolt"></i>
+      </div>
+    </div>
+
+    <div class="column shot-col" *ngIf="isShot(item)">
+      <div class="shot-icon">
+        <i class="fas fa-camera"></i>
+      </div>
+    </div>
+    
+    <!-- Title column is present for all types -->
+    <div class="column title-col">
+      <div class="title-text" [ngClass]="{'sequence-title': isSequence(item)}">
+        {{ item.title }}
+      </div>
+    </div>
+
+    <!-- Character count icon for scenes -->
+    <div class="column producer-col">
+      <i *ngIf="isScene(item) && item.characters" class="fas fa-file-alt"></i>
+    </div>
+
+    <div class="column character-col">
+      <span *ngIf="isScene(item) && item.characters">{{ item.characters }}</span>
+    </div>
+
+    <!-- Asset, Assumptions, FX icons for shots -->
+    <div class="column assets-col">
+      <i *ngIf="isShot(item) && item.has?.asset" class="fas fa-cube asset-icon"></i>
+    </div>
+
+    <div class="column assumptions-col">
+      <i *ngIf="isShot(item) && item.has?.character" class="fas fa-user assumption-icon"></i>
+    </div>
+
+    <div class="column fx-col">
+      <i *ngIf="isShot(item) && item.has?.fx" class="fas fa-fire-alt fx-icon"></i>
+    </div>
+
+    <!-- Options menu -->
+    <div class="column options-col">
+      <button class="options-btn">
+        <i class="fas fa-ellipsis-h"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Child items (recursively rendered) -->
+  <div class="child-rows" *ngIf="!item.isCollapsed">
+    <!-- For Sequences, render child Scenes -->
+    <ng-container *ngIf="isSequence(item)">
+      <app-breakdown-row 
+        *ngFor="let scene of item.scenes" 
+        [item]="scene" 
+        [type]="'scene'" 
+        [level]="level + 1">
+      </app-breakdown-row>
+    </ng-container>
+
+    <!-- For Scenes, render child ActionBeats -->
+    <ng-container *ngIf="isScene(item)">
+      <app-breakdown-row 
+        *ngFor="let actionBeat of item.actionBeats" 
+        [item]="actionBeat" 
+        [type]="'action'" 
+        [level]="level + 1">
+      </app-breakdown-row>
+    </ng-container>
+
+    <!-- For ActionBeats, render child Shots -->
+    <ng-container *ngIf="isActionBeat(item)">
+      <app-breakdown-row 
+        *ngFor="let shot of item.shots" 
+        [item]="shot" 
+        [type]="'shot'" 
+        [level]="level + 1">
+      </app-breakdown-row>
+    </ng-container>
+  </div>
+</div>
