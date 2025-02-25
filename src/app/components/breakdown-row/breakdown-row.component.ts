@@ -1,5 +1,38 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Sequence, Scene, ActionBeat, Shot } from '../../models/production.model';
+
+type RowType = 'sequence' | 'scene' | 'action' | 'shot';
+
+interface BaseItem {
+  id: string;
+  title: string;
+  isCollapsed?: boolean;
+}
+
+interface Shot extends BaseItem {
+  description: string;
+  thumbnail?: string;
+  has?: {
+    character?: boolean;
+    asset?: boolean;
+    fx?: boolean;
+  };
+}
+
+interface ActionBeat extends BaseItem {
+  description: string;
+  shots: Shot[];
+}
+
+interface Scene extends BaseItem {
+  description: string;
+  actionBeats: ActionBeat[];
+  characters?: number;
+}
+
+interface Sequence extends BaseItem {
+  description?: string;
+  scenes: Scene[];
+}
 
 @Component({
   selector: 'app-breakdown-row',
@@ -8,7 +41,7 @@ import { Sequence, Scene, ActionBeat, Shot } from '../../models/production.model
 })
 export class BreakdownRowComponent implements OnInit {
   @Input() item!: Sequence | Scene | ActionBeat | Shot;
-  @Input() type!: 'sequence' | 'scene' | 'action' | 'shot';
+  @Input() type!: RowType;
   @Input() level: number = 0;
 
   constructor() { }
