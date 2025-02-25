@@ -1,0 +1,16 @@
+This file contains helper text for development.
+
+1. How to use the breakdown component:
+- Import the component in your module
+- Add it to your template: <app-production-breakdown></app-production-breakdown>
+- Make sure the ProductionService is provided
+
+2. How to extend the application:
+- Add new components for additional features
+- Update the models as needed
+- Implement the missing functionality in the service
+
+3. Development tips:
+- Run `ng serve` to start the application
+- Use TypeScript for better type checking
+- Keep components small and focused
