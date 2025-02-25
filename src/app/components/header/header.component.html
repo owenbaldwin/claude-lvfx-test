@@ -1,0 +1,12 @@
+<header class="header">
+  <div class="header-container">
+    <a href="/" class="logo">LIAISUN VFX</a>
+    <nav class="main-nav">
+      <ul>
+        <li *ngFor="let item of navItems">
+          <a [routerLink]="item.link" [class.active]="item.active">{{ item.label }}</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
