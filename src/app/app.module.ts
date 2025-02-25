@@ -8,6 +8,9 @@ import { HeaderComponent } from './components/header/header.component';
 import { ProductionBreakdownComponent } from './components/production-breakdown/production-breakdown.component';
 import { BreakdownRowComponent } from './components/breakdown-row/breakdown-row.component';
 
+// Services
+import { ProductionService } from './services/production.service';
+
 const routes: Routes = [
   { path: '', redirectTo: '/breakdown', pathMatch: 'full' },
   { path: 'breakdown', component: ProductionBreakdownComponent },
@@ -26,7 +29,9 @@ const routes: Routes = [
     FormsModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [
+    ProductionService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
